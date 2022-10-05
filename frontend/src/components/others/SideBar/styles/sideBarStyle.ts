@@ -1,7 +1,7 @@
 const sideBarStyle = {
   sidebar: {
-    padding: '25px 10px',
-    flex: 0.29
+    paddingLeft: '20px',
+    flex: 0.25
   }
 }
 
