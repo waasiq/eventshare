@@ -13,7 +13,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 
-function Login() {
+const Login: React.FC = function() {
   return (
     <>
       <Grid container component="main" sx={{ height: '100vh' }}>

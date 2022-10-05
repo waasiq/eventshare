@@ -10,6 +10,7 @@
     "overrides": [
     ],
     "parserOptions": {
+        "project": ["./tsconfig.json"], 
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
@@ -17,5 +18,6 @@
         "react"
     ],
     "rules": {
+        "semi": 0
     }
 }

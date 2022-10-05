@@ -1,9 +1,9 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
-import Home from './pages/Home';
-import Login from './pages/Login/Login';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home/Home'
+import Login from './pages/Login/Login'
 
-function App() {
+const App: React.FC = function () {
   return (
       <Router>
         <Routes>
@@ -11,7 +11,7 @@ function App() {
           <Route path="/" element={<Login />} />
         </Routes>
       </Router>
-  );
+  )
 }
 
-export default App;
+export default App
