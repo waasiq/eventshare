@@ -6,7 +6,7 @@ import SideBar from '../../components/others/SideBar/SideBar'
 import Feed from '../../components/others/Feed/Feed'
 import IconBar from '../../components/others/IconBar/IconBar'
 
-import homeStyle from './styles'
+import homeStyle from './styles/styles'
 
 const Home: React.FC = function () {
   return (

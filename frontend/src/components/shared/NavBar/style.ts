@@ -16,6 +16,7 @@ const navStyle = {
   },
   homeTab: {
     backgroundColor: '#f5fdff',
+    textDecoration: 'none',
     borderRadius: '25px',
     padding: '5px 5px',
     margin: '0 15px'
@@ -29,7 +30,7 @@ const navStyle = {
     paddingLeft: '30px'
   },
   homeIcon: {
-    marginRight: '-47px',
+    marginRight: '-35px',
     zIndex: 1,
     color: '#1da1f2'
   },
@@ -65,6 +66,22 @@ const navStyle = {
     fontWeight: 'bold',
     padding: '0 20px',
     color: '#b7c8d0'
+  },
+  appIcon: {
+    width: '30px',
+    height: '30px',
+    display: 'flex',
+    cursor: 'pointer'
+  },
+  dropDownMenu: {
+    display: 'flex',
+    position: 'absolute',
+    top: '-550px',
+    zIndex: 1,
+    right: '0',
+    justifyContent: 'center',
+    borderRadius: '25px',
+    color: '#b7c8d0',
   }
 } as const
 
