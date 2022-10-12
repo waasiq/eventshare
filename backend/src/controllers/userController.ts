@@ -4,7 +4,7 @@ import User from '../models/userModel';
 const getUsers = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const users = await User.find();
-        
+        //console.log(User);
         res.status(200).json({
             status: 'success',
             results: users.length,

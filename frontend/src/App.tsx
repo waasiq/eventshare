@@ -4,6 +4,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 import Test from './pages/Test'
+import Party from './pages/Party/Party'
 
 const App: React.FC = function () {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = function () {
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/party" element={<Party />} />
           <Route path="/test" element={<Test />} />
         </Routes>
       </Router>

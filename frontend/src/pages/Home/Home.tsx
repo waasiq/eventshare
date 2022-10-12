@@ -13,9 +13,9 @@ const Home: React.FC = function () {
     <>
       <NavBar />
       <Box sx={homeStyle.container}>
-        <SideBar />
-        <Feed />
         <IconBar />
+        <Feed />
+        <SideBar />
       </Box>
     </>
   )
