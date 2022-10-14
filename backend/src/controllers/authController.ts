@@ -134,16 +134,25 @@ const generateAccessToken = async (req: Request, res: Response, next: NextFuncti
         if (!rf_token) {
             return res.status(400).json({ message: 'Please login or register' });
         }
-        jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET as string, async (err, user) => {
+
+        jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET as string, async (err:any, result:any) => {
             if (err) {
                 return res.status(400).json({ message: 'Please login or register' });
             }
             
-            const accessToken = createAccessToken({ id: user.id });
-            res.status(200).json({ accessToken });
+            const user = await User.findById(result.id).select('-password')
+            .populate('followers following', '-password');
+
+            if (!user) {
+                return res.status(400).json({ message: 'User does not exist' });
+            }
+
+            const accessToken = createAccessToken({ id: result.id });
+            res.status(200).json({ 
+                accessToken,
+                user
+            });
         });
-        
-        res.json({ rf_token });
     }
     catch (err) {
         console.log(err);

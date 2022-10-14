@@ -13,7 +13,26 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 
+import { LoginAction } from '../../redux/actions/authAction';
+import { useDispatch } from 'react-redux';
+
 const Login: React.FC = function() {
+  const initialState = { email: '', password: '' };
+  const [userData, setUserData] = React.useState(initialState);
+  const { email, password } = userData;
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(LoginAction(userData)); 
+  };
+
   return (
     <>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -48,7 +67,7 @@ const Login: React.FC = function() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={()=> console.log('Hello')} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -58,6 +77,7 @@ const Login: React.FC = function() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={handleChange}
               />
               <TextField
                 margin="normal"
@@ -68,6 +88,7 @@ const Login: React.FC = function() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleChange}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
