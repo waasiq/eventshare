@@ -2,8 +2,9 @@ const loadingStyle = {
     position: {
         position: 'fixed',
         textAlign: 'center',
-        top: 0,
-        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#0008',
         zIndex: 50
     },
     loading:{

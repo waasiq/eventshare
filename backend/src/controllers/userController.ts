@@ -26,23 +26,6 @@ const getUser = async (req: Request, res: Response, next: NextFunction) => {
     res.json(user);
 };  
 
-const createUser = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const newUser = await User.create(req.body);
-        res.status(201).json({
-            status: 'success',
-            data: {
-                user: newUser
-            }
-        });
-    } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: err
-        });
-    }
-}
-
 const updateUser = async (req: Request, res: Response, next: NextFunction) => {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(user);
@@ -51,6 +34,5 @@ const updateUser = async (req: Request, res: Response, next: NextFunction) => {
 export {
     getUsers,
     getUser,
-    createUser,
     updateUser
 };

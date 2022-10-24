@@ -3,8 +3,12 @@ import NavBar from '../../components/shared/NavBar/NavBar'
 import { Box, Typography } from '@mui/material'
 import Tabs from '../../components/others/Tabs/Tabs'
 import profileStyle from './styles/profileStyle'
+import { useSelector } from 'react-redux'
 
 const Profile: React.FC = function () {
+  const { auth } = useSelector((state: any) => state);
+  const { user } = auth;
+
   return (
     <React.Fragment>
         <NavBar />
@@ -13,11 +17,11 @@ const Profile: React.FC = function () {
         </Box>
         <Box sx={profileStyle.container}>
             <Box sx={profileStyle.profilePictureContainer}>
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" style={profileStyle.profilePicture} alt="profile" />
+                <img src={user.avatar} style={profileStyle.profilePicture} alt="profile" />
             </Box>
             <Box sx={profileStyle.profileInfo}>
-                <Typography variant="h4" sx={profileStyle.name}>John Doe</Typography>
-                <Typography variant="h6" sx={profileStyle.username}>@johndoe</Typography>
+                <Typography variant="h4" sx={profileStyle.name}>{user.name}</Typography>
+                <Typography variant="h6" sx={profileStyle.username}>@{user.username}</Typography>
             </Box>
         </Box>
         <Box sx={profileStyle.tabs} >

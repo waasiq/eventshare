@@ -1,14 +1,12 @@
 import React from 'react'
 import loadingStyle from './styles/loadingStyle'
 import Box from '@mui/material/Box'
-import * as css from './styles/animations.css'
-
-//! Make type declaration for CSS module
+import'./styles/animation.css';
 
 const Loading:React.FC = function () {
   return (
     <Box sx={[loadingStyle.position, loadingStyle.loading]}>
-        <svg width="205" height="250" viewBox='0 0 40 50'>
+        <svg className='svg' width="205" height="250" viewBox='0 0 40 50'>
             <polygon 
                 stroke='#fff'
                 strokeWidth='1'

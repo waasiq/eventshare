@@ -1,8 +1,12 @@
 import React from 'react'
 import { Box, Card, CardContent, CardMedia, Avatar, Typography } from '@mui/material'
 import userCardStyle from './styles/userCardStyle'
+import { useSelector } from 'react-redux'
 
 const UserCard: React.FC = function () {
+  const { auth } = useSelector((state: any) => state);
+  const { user } = auth;
+
   return (
     <Card sx={userCardStyle.card}>
       <CardContent>
@@ -14,18 +18,18 @@ const UserCard: React.FC = function () {
         />
         <Avatar
           alt="avatar"
-          src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
+          src={user.avatar}
           sx={userCardStyle.avatar}
         />
         <Box sx={userCardStyle.content}>
           <Typography variant="h6" sx={userCardStyle.name}>
-            Waasiq Masood
+            {user.name}
           </Typography>
           <Typography variant="subtitle2" sx={userCardStyle.username}>
-            @waasiqmasood
+            @{user.username}
           </Typography>
           <Typography variant="subtitle2" sx={userCardStyle.username}>
-            Munich, Germany
+            {user.city}, {user.country}
           </Typography>
           <Typography variant="body1" sx={userCardStyle.bio}>
             I am a full stack developer
@@ -34,18 +38,18 @@ const UserCard: React.FC = function () {
         <Box sx={userCardStyle.stats}>
           <Box sx={userCardStyle.stat}>
             <Typography variant="h6" sx={userCardStyle.statNumber}>
-              10
+              {user.followers.length}
             </Typography>
             <Typography variant="subtitle2" sx={userCardStyle.statLabel}>
-              Following
+              {user.followers.length === 1 ? 'Follower' : 'Followers'}
             </Typography>
           </Box>
           <Box sx={userCardStyle.stat}>
             <Typography variant="h6" sx={userCardStyle.statNumber}>
-              10
+              {user.following.length}
             </Typography>
             <Typography variant="subtitle2" sx={userCardStyle.statLabel}>
-              Followers
+              Following
             </Typography>
           </Box>
         </Box>

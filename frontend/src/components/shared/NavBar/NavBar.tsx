@@ -11,8 +11,20 @@ import HomeIcon from '@mui/icons-material/Home'
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
+import { logout } from '../../../redux/actions/authAction'
+import { useDispatch, useSelector } from 'react-redux'
+
 const NavBar: React.FC = function () {
   const [open, setOpen] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = useState();
+  
+  const { auth } = useSelector((state: any) => state);
+  const { user } = auth;
+  console.log(user);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
       <Box sx={navStyle.navbar}>
@@ -30,21 +42,21 @@ const NavBar: React.FC = function () {
             <Link to="/profile">
               <Avatar
                 alt="avatar"
-                src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
+                src={user.avatar}
                 sx={navStyle.userIcon}
               />
             </Link>
             <Box style={navStyle.userTab}>
-              <Link to="/profile" style={navStyle.userText}>Waasiq Masood</Link>
+              <Link to="/profile" style={navStyle.userText}>{user.name}</Link>
             </Box>
             <Box style={navStyle.link} >
               <AppsIcon style={navStyle.appIcon} onClick={() => setOpen(true)} />
               <Menu
+                anchorEl={anchorEl}
                 id="account-menu"
                 open={open}
                 sx={navStyle.dropDownMenu}
                 onClose={() => setOpen(false)}               
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               >
                 <MenuItem>
@@ -53,7 +65,7 @@ const NavBar: React.FC = function () {
                   </ListItemIcon>
                   Settings
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={handleLogout}>
                   <ListItemIcon>
                     <Logout fontSize="small" />
                   </ListItemIcon>
@@ -62,7 +74,6 @@ const NavBar: React.FC = function () {
               </Menu>
             </Box>
           </Box>
-         
       </Box>
   )
 }
