@@ -7,7 +7,11 @@ import { useSelector } from 'react-redux'
 
 const Profile: React.FC = function () {
   const { auth } = useSelector((state: any) => state);
-  const { user } = auth;
+  let { user } = auth;
+
+  if (!auth) {
+    user = localStorage.getItem('user');
+  }
 
   return (
     <React.Fragment>
@@ -17,7 +21,7 @@ const Profile: React.FC = function () {
         </Box>
         <Box sx={profileStyle.container}>
             <Box sx={profileStyle.profilePictureContainer}>
-                <img src={user.avatar} style={profileStyle.profilePicture} alt="profile" />
+                <img src={user.avatar ? user.avatar : 'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png' } style={profileStyle.profilePicture} alt="profile" />
             </Box>
             <Box sx={profileStyle.profileInfo}>
                 <Typography variant="h4" sx={profileStyle.name}>{user.name}</Typography>

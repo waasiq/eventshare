@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
+import Info from '../Info/Info'
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -57,7 +58,7 @@ const BasicTabs: React.FC = function () {
         Item One
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <Info />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

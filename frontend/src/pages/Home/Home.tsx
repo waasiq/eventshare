@@ -9,6 +9,12 @@ import homeStyle from './styles/styles'
 import { useSelector } from 'react-redux'
 
 const Home: React.FC = function () {
+  const { auth } = useSelector((state: any) => state);
+  let { user } = auth;
+
+  if (!auth) {
+    user = localStorage.getItem('user');
+  }
 
   return (
     <>

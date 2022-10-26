@@ -8,7 +8,7 @@ const profileStyle = {
     position: 'relative'
   },
   coverPicture: {
-    width: '100vw',
+    width: '100%',
     height: '100%',
     objectFit: 'cover'
   },
@@ -46,7 +46,7 @@ const profileStyle = {
     color: '#555'
   },
   tabs: {
-    margin: '2% 25%'
+    padding: '2% 10%'
   }
 } as const
 

@@ -18,7 +18,7 @@ export const LoginAction = (data: any) => async (dispatch: any) => {
         })
 
         localStorage.setItem('firstLogin',"true");
-
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         dispatch({
             type: 'NOTIFY',
             payload: {
@@ -94,7 +94,8 @@ export const register = (data: any) => async (dispatch: any) => {
         })
 
         localStorage.setItem("firstLogin", "true");
-        
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+
         dispatch({
             type: 'NOTIFY',
             payload: {
