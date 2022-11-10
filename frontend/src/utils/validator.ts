@@ -6,7 +6,7 @@ export const validateRegister = ({
     email,
     password,
     password2
-}: IUserRegister) => {
+}: any) => {
     const errors: Record<string, string> = {};
 
     if (!name) {

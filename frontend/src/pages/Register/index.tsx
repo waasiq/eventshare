@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import ErrorIcon from '@mui/icons-material/Error';
 import { useDispatch } from 'react-redux'
-import { register } from '../../redux/actions/authAction'
+import { register } from '../../redux/actions/authActions';
 import { useNavigate } from "react-router-dom";
 
 

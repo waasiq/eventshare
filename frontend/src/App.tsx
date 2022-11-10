@@ -7,7 +7,7 @@ import Party from './pages/Party/Party'
 import Register from './pages/Register/Register'
 
 import Notify from './components/shared/Notify/Notify'
-import { refreshToken } from './redux/actions/authAction'
+import { refreshToken } from './redux/actions/authActions'
 import { useSelector, useDispatch } from 'react-redux'
 
 const App: React.FC = function () {

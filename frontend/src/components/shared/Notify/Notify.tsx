@@ -13,9 +13,9 @@ const Notify: React.FC =  function () {
   
   return (
     <Box>
-        {notify.loading && <Loading />} 
-        {notify.error && <Toast severity="error" message={notify.error} open />}
-        {notify.success && <Toast severity="success" message={notify.success} open />}
+        {/* {notify.loading && <Loading />}  */}
+        {/* {notify.error && <Toast severity="error" message={notify.error} open />}
+        {notify.success && <Toast severity="success" message={notify.success} open />} */}
     </Box>
   )
 }

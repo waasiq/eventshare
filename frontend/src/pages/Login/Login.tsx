@@ -9,7 +9,7 @@ import {
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 import { useNavigate } from 'react-router-dom';
-import { LoginAction } from '../../redux/actions/authAction';
+import { login } from '../../redux/actions/authActions';
 import { useDispatch } from 'react-redux';
 
 const Login: React.FC = function() {
@@ -31,7 +31,7 @@ const Login: React.FC = function() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(LoginAction(userData)); 
+    dispatch(login(userData)); 
   };
 
   return (
