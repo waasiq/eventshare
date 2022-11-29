@@ -21,7 +21,11 @@ const NavBar: React.FC = function () {
   const [anchorEl, setAnchorEl] = useState();
   
   const { auth } = useSelector((state: any) => state);
-  const { user } = auth;
+  let { user } = auth;
+
+  if (!user) {
+    user = JSON.parse(localStorage.getItem('user') as any);
+  }
 
   const dispatch = useDispatch();
   const handleLogout = () => {

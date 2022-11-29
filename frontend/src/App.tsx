@@ -5,6 +5,7 @@ import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 import Party from './pages/Party/Party'
 import Register from './pages/Register/Register'
+import Activities from './pages/Activities/Activities'
 
 import Notify from './components/shared/Notify/Notify'
 import { refreshToken } from './redux/actions/authActions'
@@ -30,6 +31,7 @@ const App: React.FC = function () {
           <Route path="/profile" element={<Profile />} />
           <Route path="/party" element={<Party />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/activities' element={<Activities />} />
         </Routes>
       </Router>
   )

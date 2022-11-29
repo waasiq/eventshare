@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBar from '../../components/shared/NavBar/NavBar'
-const Party: React.FC = function () {
 
+const Party: React.FC = function () {
   return (
     <React.Fragment>
         <NavBar />
