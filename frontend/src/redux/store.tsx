@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-// import * as Sentry from "@sentry/react";
 
 import rootReducer from "./reducers";
 

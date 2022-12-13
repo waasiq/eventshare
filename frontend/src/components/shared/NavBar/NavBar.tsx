@@ -38,7 +38,7 @@ const NavBar: React.FC = function () {
             <img style={navStyle.img} src={logo} alt="logo" />
         </Box>
         <Box>
-          <Search />
+          {/* <Search /> */}
         </Box>
         <Box sx={navStyle.navLinks}>
           <Link to="/home" style={navStyle.homeTab}>

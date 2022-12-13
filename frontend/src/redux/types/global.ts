@@ -20,4 +20,6 @@ export namespace GLOBALTYPES {
     export const LOADING_POST = "LOADING_POST";
     export const GET_POSTS = "GET_POSTS";
     export const UPDATE_POST = "UPDATE_POST";
+
+    export const SET_ACTIVITY_SEARCH = "SET_ACTIVITY_SEARCH"
 }

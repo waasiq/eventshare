@@ -1,13 +1,19 @@
 const activitiesStyles = {
-    container: {
+    mainContainer: {
+        display: 'flex'
+    },
+    activitiesContainer: {
+        flex: 0.75,
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    cardsContainer: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
-        width: '100%',
-        height: '80%',
     },
     card: {
-        padding: '10px 20px',
+        padding: '20px 20px',
+        width: '80%',
         '&:hover': {
             cursor: 'pointer',
             boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.2)',

@@ -8,7 +8,7 @@ const SideBar: React.FC = function () {
   return (
     <Box sx={sideBarStyle.sidebar} >
         <UserCard />
-        <Discover />
+        {/* <Discover /> */}
      </Box>
   )
 }

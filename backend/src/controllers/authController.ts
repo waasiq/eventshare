@@ -4,11 +4,11 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 
 const createAccessToken = (payload: any): string =>{
-    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET as string, { expiresIn: '1d' });
+    return jwt.sign(payload, 'biryani' , { expiresIn: '1d' });
 }
 
 const createRefreshToken = (payload: any): string => {
-    return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET as string, { expiresIn: '30d' });
+    return jwt.sign(payload, 'karahi' , { expiresIn: '30d' });
 }
 
 const register = async (req: Request, res: Response, next: NextFunction) => {

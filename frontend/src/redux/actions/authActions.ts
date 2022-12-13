@@ -14,7 +14,8 @@ export const login =
             dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
             const res = await postDataAPI("login", data);
             localStorage.setItem("firstLogin", "true");
-
+            localStorage.setItem("user", JSON.stringify(res.data.user));
+            
             dispatch({
                 type: GLOBALTYPES.AUTH,
                 payload: { token: res.data.accessToken, user: res.data.user }
@@ -102,3 +103,5 @@ export const logout =
             });
         }
     };
+
+

@@ -1,6 +1,11 @@
 import axios from 'axios'
 
-export const getDataAPI = async (url: string, token: string) => {
+export const getDataAPI = async (url: string, token?: string) => {
+    if (!token) {
+        const res = await axios.get(`/api/${url}`)
+        return res
+    }
+    
     const res = await axios.get(`/api/${url}`, {
         headers: { Authorization: token }
     })

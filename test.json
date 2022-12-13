@@ -1,0 +1,24 @@
+{
+    "name": "Waasiq",
+    "username": "waasiq",
+    "email": "waasiqmasood@gmail.com",
+    "password": "$2b$12$gHzHUG7uboKHmaPNLY96Q.9WQJ3jDH9fzrvwxliWcAN.5lAj7Ew6S",
+    "avatar": "https://as1.ftcdn.net/v2/jpg/03/53/11/00/1000_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg",
+    "role": "user",
+    "gender": "male",
+    "city": "Rawalpindi",
+    "country": "Pakistan",
+    "followers": [],
+    "following": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1665577827856"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1665577827856"
+      }
+    },
+    "__v": 0
+  }

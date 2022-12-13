@@ -37,4 +37,4 @@ const App: React.FC = function () {
   )
 }
 
-export default App
+export default App;

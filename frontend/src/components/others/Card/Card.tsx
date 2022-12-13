@@ -9,13 +9,19 @@ interface Props {
     title: string
     description: string
     image: string
+    link: string
 }
 
 const CardC:React.FC<Props> = function (props: Props)  {
-  const { title, description, image } = props
+  let { title, description, image } = props
+
+  const redirect = () => {
+    const redirectLink = 'https://www.facebook.com/' + props.link;
+    window.open(redirectLink, "_blank");
+  }
 
   return (
-    <Card style={{backgroundColor: "lightgrey"}} sx={{ maxWidth: 345 }}>
+    <Card onClick={redirect} style={{backgroundColor: "lightgrey"}} >
       <CardActionArea>
         <CardMedia
           component="img"
