@@ -3,7 +3,7 @@ import { Box, Button } from '@mui/material';
 import activitiesStyles from './styles/activityStyles';
 import CardC from '../../components/others/Card/Card';
 import { useSelector } from 'react-redux';
-import FbScraper from './facebookScraper';
+import Scraper from './Scraper';
 
 const Activity: React.FC = function () {
     const activity = useSelector((state: any) => state.activity);
@@ -13,7 +13,7 @@ const Activity: React.FC = function () {
         
         {
           <>
-              {activity && <FbScraper evnt={activity} />}
+              {activity && <Scraper evnt={activity} />}
           </> 
         }
 

@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import userRouter from './routes/userRoute';
 import authRouter from './routes/authRoute';
 import scraperRouter from './routes/scraperRoute';
+import eventRouter from './routes/eventRoute';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -28,6 +29,7 @@ mongoose.connect(process.env.LOCAL_DB as string,
 app.use('/api/users', userRouter);
 app.use('/api/', authRouter);
 app.use('/api/scrape', scraperRouter);
+app.use('/api/events', eventRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World!');

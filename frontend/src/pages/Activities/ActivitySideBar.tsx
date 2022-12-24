@@ -3,7 +3,7 @@ import { MenuItem, Select, LinearProgress,
         FormControl, InputLabel, Box,
         TextField, Button
 } from '@mui/material';
-import FbScraper from './facebookScraper';
+import FbScraper from './Scraper';
 import sideBarStyles from './styles/sideBarStyles';
 import { useDispatch } from 'react-redux';
 import { setSearch } from '../../redux/actions/activityActions';
@@ -46,15 +46,7 @@ const Activities: React.FC = function () {
                 ))}
                 </Select>
             </FormControl>
-
-            <TextField 
-                sx={sideBarStyles.formControl}
-                id="outlined-basic"
-                label="Enter Text"
-                variant="standard"
-                focused 
-            />
-
+            
             <Button variant="contained" sx={sideBarStyles.button} onClick={searchBtnClick} >
                 Search Events on Facebook
             </Button>

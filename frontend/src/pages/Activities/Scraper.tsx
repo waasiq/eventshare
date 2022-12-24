@@ -9,7 +9,7 @@ interface Props {
   evnt: string;
 }
 
-const FbScraper:React.FC<Props> = function(props: Props )  {
+const Scraper:React.FC<Props> = function(props: Props )  {
   const [data, setData] = useState<any>(null);
 
   const getData = async () => {
@@ -65,4 +65,4 @@ const FbScraper:React.FC<Props> = function(props: Props )  {
   )
 };
 
-export default FbScraper;
+export default Scraper;
