@@ -1,25 +1,41 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import { Card, Input, CardContent, LinearProgress } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress';
 import CardC from '../../components/others/Card/Card'
 import activitiesStyles from './styles/activityStyles'
 import { getDataAPI } from '../../utils/fetchApi';
 
 interface Props {
   evnt: string;
+  type: any;
 }
 
 const Scraper:React.FC<Props> = function(props: Props )  {
   const [data, setData] = useState<any>(null);
+  const { evnt, type } = props;
+  const [loading, setLoading] = useState(true);
 
   const getData = async () => {
-    const res = await getDataAPI(`scrape/facebook?event=${props.evnt}`) ;
-    console.log(res.data.events);
-    setData(res.data.events);
+    setLoading(true);
+    if (type == 'fb') {
+      const res = await getDataAPI(`scrape/facebook?event=${props.evnt}`) ;
+      console.log(res.data.events);
+      setData(res.data.events);
+    } else if (type == 'lnkdn') {
+      const res = await getDataAPI(`scrape/linkedin?event=${props.evnt}`) ;
+      console.log(res.data.events);
+      setData(res.data.events);
+    } else if (type == 'meetup') {
+      const res = await getDataAPI(`scrape/meetup?event=${props.evnt}`) ;
+      console.log(res.data.events);
+      setData(res.data.events);
+    }
   };
 
   React.useEffect(() => {
     getData();
+    if (data) setLoading(false);
   }, [data]);
 
   const displayData:any = (data:any) => {
@@ -60,6 +76,7 @@ const Scraper:React.FC<Props> = function(props: Props )  {
 
   return (
     <Box sx={activitiesStyles.activitiesContainer} >
+        { loading && <LinearProgress /> }
         { data && displayData(data) }
     </Box>
   )

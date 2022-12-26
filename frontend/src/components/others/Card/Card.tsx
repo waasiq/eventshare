@@ -1,9 +1,11 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import { Box, Modal, Typography, Button } from '@mui/material';
+import { Box, Modal, Typography, Button, Snackbar, Alert } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import {postDataAPI} from '../../../utils/fetchApi';
+import { useSelector } from 'react-redux';
 
 interface Props {
     title: string
@@ -13,16 +15,40 @@ interface Props {
 }
 
 const CardC:React.FC<Props> = function (props: Props)  {
-  let { title, description, image } = props
+  const user = useSelector((state: any) => state.auth);
+  
+  let { title, description, image, link } = props
   const [open, setOpen] = React.useState(false);
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  
+  const handleBtnClick = async () => {
+    
+    await postDataAPI('events/register', {
+      username: user.user.username,
+      eventName: title,
+      eventLink: link
+    })
+    .then(res => {          
+      setOpen(!open);
+      setOpenSnackbar(!openSnackbar);  
+    })
+    .catch(err => console.log(err))
 
-  const redirect = () => {
-    const redirectLink = 'https://www.facebook.com/' + props.link;
-    window.open(redirectLink, "_blank");
-  }
-
+  };
+  
   return (
     <>
+    <Snackbar 
+      open={openSnackbar}
+      autoHideDuration={6000}
+      onClose={() => setOpenSnackbar(!openSnackbar)}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }
+    }>
+      <Alert onClose={() => setOpenSnackbar(!openSnackbar)} severity="success" sx={{ width: '100%' }}>
+        Successfully registered
+      </Alert>
+    </Snackbar>
+
     <Modal
       open={open}
       onClose={() => setOpen(!open)}
@@ -41,7 +67,9 @@ const CardC:React.FC<Props> = function (props: Props)  {
           boxShadow: 24,
           p: 4,
         }
-      }>
+      } 
+        onClick={handleBtnClick}
+      >
         <Typography id="modal-modal-title" variant="h6" component="h2">
           Do you want to go to {title}?
         </Typography>

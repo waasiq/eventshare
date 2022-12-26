@@ -162,12 +162,14 @@ async function getRenderedPage (url:any, type: string) {
     await page.waitForNetworkIdle({ idleTime: 1000 })
   }
 
-  await page.goto(url, { timeout: 0, waitUntil: 'load' });
-  
+  await page.goto(url, { timeout: 0 });
+
+  if (type === 'fb' || type === 'meetup') await page.waitForNetworkIdle({ idleTime: 1000 })
+  const pagesContent = await page.content();
+  browser.close()
   // if (type === 'fb') await autoScroll(page);
   
-  await page.waitForNetworkIdle({ idleTime: 1000 })
-  return page.content()
+  return pagesContent;
 }
 
 

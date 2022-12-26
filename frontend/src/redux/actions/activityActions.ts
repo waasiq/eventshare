@@ -1,7 +1,7 @@
 
-export const setSearch = (searchStatus: any) => {
+export const setSearch = (activity: any, type:any) => {
     return {
         type: "SET_ACTIVITY_SEARCH",
-        payload: searchStatus
+        payload: [activity,type]
     };
 }

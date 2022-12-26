@@ -5,16 +5,20 @@ const sideBarStyles = {
         color: 'white',
     },
     formControl: {
-        margin: '10px 10px',
-        minWidth: 120,
+        padding: '0 0px',
+        minWidth: '5px',
+        maxWidth: '75%',
         color: 'white',
         backgroundColor: 'lightblue',
+        display: 'flex',
+        borderRadius: '10px',
     },
       selectEmpty: {
         marginTop: 2,
     },
     button: {
-        margin: '10px 10px',
+        margin: '10px 0px',
+        width: '75%',
     }
 
 }

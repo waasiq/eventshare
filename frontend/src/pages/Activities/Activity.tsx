@@ -7,13 +7,25 @@ import Scraper from './Scraper';
 
 const Activity: React.FC = function () {
     const activity = useSelector((state: any) => state.activity);
-  
+    const [finalActivity, setFinalActivity] = React.useState(null);
+    const [type, setType] = React.useState(null);
+
+    React.useEffect(() => {
+      if(activity) {
+        const act = activity[0]; 
+        const typ = activity[1];
+        setFinalActivity(act);
+        setType(typ);
+        console.log(act);
+      }
+    }, [activity]);
+
     return (
         <Box sx={activitiesStyles.activitiesContainer} >
         
         {
           <>
-              {activity && <Scraper evnt={activity} />}
+              {finalActivity && <Scraper evnt={finalActivity} type={type} /> }
           </> 
         }
 

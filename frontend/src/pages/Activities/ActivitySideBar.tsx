@@ -3,7 +3,6 @@ import { MenuItem, Select, LinearProgress,
         FormControl, InputLabel, Box,
         TextField, Button
 } from '@mui/material';
-import FbScraper from './Scraper';
 import sideBarStyles from './styles/sideBarStyles';
 import { useDispatch } from 'react-redux';
 import { setSearch } from '../../redux/actions/activityActions';
@@ -12,21 +11,29 @@ const Activities: React.FC = function () {
     const dispatch = useDispatch();
 
     const [activity, setActivity] = React.useState('');
-    const [searchBtn , setSearchBtn] = React.useState(false);
-    const [isLoading, setIsLoading] = React.useState(false);
-    const activities = ['Swimming', 'Running', 'Hiking', 'Biking', 'Climbing', 'Yoga', 'Pilates', 'Dancing', 'Weightlifting', 'Boxing', 'Tennis', 'Soccer', 'Basketball', 'Baseball', 'Football', 'Volleyball', 'Skateboarding', 'Snowboarding', 'Skiing', 'Surfing', 'Kayaking', 'Canoeing', 'Fishing', 'Hunting'];
+    const [fbActivity, setFbActivity] = React.useState('');
+    const [linkdnActivity, setLinkdnActivity] = React.useState('');
+    const [meetupActivity, setMeetupActivity] = React.useState('');
     
-    const handleChange = (event:any) => {
-        setActivity(event.target.value);
+    const fbActivities = ['Swimming', 'Running', 'Hiking', 'Biking', 'Climbing', 'Yoga', 'Pilates', 'Dancing', 'Weightlifting', 'Boxing', 'Tennis', 'Soccer', 'Basketball', 'Baseball', 'Football', 'Volleyball', 'Skateboarding', 'Snowboarding', 'Skiing', 'Surfing', 'Kayaking', 'Canoeing', 'Fishing', 'Hunting'];
+    const linkdnActivies = ['Cybersecurity', 'Software', 'PublicSpeaking' , 'DataScience', 'MachineLearning', 'ArtificialIntelligence', 'WebDevelopment', 'MobileDevelopment', 'CloudComputing', 'Blockchain', 'DigitalMarketing', 'UXDesign', 'UIDesign', 'GraphicDesign', 'Photography', 'VideoEditing', 'MusicProduction', 'Animation', 'GameDevelopment', 'ProductManagement', 'ProjectManagement', 'BusinessDevelopment', 'Sales', 'Accounting', 'Finance', 'Investing', 'RealEstate', 'Law', 'Entrepreneurship', 'PublicPolicy', 'Economics', 'Psychology', 'Nutrition', 'Health', 'Fitness', 'Meditation', 'Yoga', 'Pilates', 'Dancing', 'Weightlifting', 'Boxing', 'Tennis', 'Soccer', 'Basketball', 'Baseball', 'Football', 'Volleyball', 'Skateboarding', 'Snowboarding', 'Skiing', 'Surfing', 'Kayaking', 'Canoeing', 'Fishing', 'Hunting'];
+
+    const handleChange = (event:any, type:any) => {
+        if (type === 'fb') {
+            setFbActivity(event.target.value);
+            setActivity(event.target.value);
+        } else if (type === 'lnkdn') {
+            setLinkdnActivity(event.target.value);
+            setActivity(event.target.value);
+        } else if (type === 'meetup') {
+            setMeetupActivity(event.target.value);
+            setActivity(event.target.value);
+        }
     };
 
-    const searchBtnClick = () => {
-        dispatch(setSearch(activity));
-
-        // if(activity) {
-        //     setSearchBtn(true);
-        //     // setIsLoading(true);
-        // }
+    const searchBtnClick = (type:any) => {
+        console.log(type);
+        dispatch(setSearch(activity, type));
     };
 
     return (
@@ -34,45 +41,55 @@ const Activities: React.FC = function () {
             <h2> Find Common Activities </h2>
 
             <FormControl sx={sideBarStyles.formControl} >
-                <InputLabel id="demo-simple-select-label">Activity</InputLabel>
+                <InputLabel id="demo-simple-select-label">Facebook Activities</InputLabel>
                 <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={activity}
-                onChange={handleChange}
+                value={fbActivity}
+                onChange={(e) => handleChange(e,'fb')}
                 >
-                {activities.map((activity, index) => (
+                {fbActivities.map((activity, index) => (
                     <MenuItem key={index} value={activity}>{activity}</MenuItem>
                 ))}
                 </Select>
             </FormControl>
             
-            <Button variant="contained" sx={sideBarStyles.button} onClick={searchBtnClick} >
+            <Button variant="contained" sx={sideBarStyles.button} onClick={() => searchBtnClick('fb')} >
                 Search Events on Facebook
             </Button>
 
-            <TextField 
-                sx={sideBarStyles.formControl}
-                id="outlined-basic"
-                label="Enter Text"
-                variant="standard"
-                focused 
-            />
+            <FormControl sx={sideBarStyles.formControl} >
+                <InputLabel id="demo-simple-select-label">Meetup Activities</InputLabel>
+                <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={meetupActivity}
+                onChange={(e) => handleChange(e,'meetup')}
+                >
+                {fbActivities.map((activity, index) => (
+                    <MenuItem key={index} value={activity}>{activity}</MenuItem>
+                ))}
+                </Select>
+            </FormControl>
 
-            <Button variant="contained" sx={sideBarStyles.button} onClick={searchBtnClick}>
-                Search Events on MeetUp
+            <Button variant="contained" sx={sideBarStyles.button} onClick={() => searchBtnClick('meetup')}>
+                Search Events on  MeetUp
             </Button>
-
-            <TextField 
-                sx={sideBarStyles.formControl}
-                id="outlined-basic"
-                label="Enter Text"
-                variant="standard"
-                focused 
-            />
-
             
-            <Button variant="contained" sx={sideBarStyles.button} onClick={searchBtnClick} > 
+            <FormControl sx={sideBarStyles.formControl} >
+                <InputLabel id="demo-simple-select-label">LinkedIn Activities</InputLabel>
+                <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={linkdnActivity}
+                onChange={(e) => handleChange(e,'lnkdn')}
+                >
+                {linkdnActivies.map((activity, index) => (
+                    <MenuItem key={index} value={activity}>{activity}</MenuItem>
+                ))}
+                </Select>
+            </FormControl>
+            <Button variant="contained" sx= {sideBarStyles.button} onClick={() => searchBtnClick('lnkdn')} > 
                 Search Events on LinkedIn
             </Button>
         </Box>
