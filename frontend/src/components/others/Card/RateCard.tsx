@@ -1,41 +1,53 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
 import { Box, Modal, Typography, Button, Snackbar, Alert } from '@mui/material';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
-import {postDataAPI} from '../../../utils/fetchApi';
+import { Card, CardMedia, CardContent, CardActionArea } from '@mui/material';
+import { postDataAPI } from '../../../utils/fetchApi';
 import { useSelector } from 'react-redux';
+
+import { styled } from '@mui/material/styles';
+import Rating, { IconContainerProps } from '@mui/material/Rating';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 interface Props {
     title: string
     description: string
     image: string
     link: string
+    rating: number
     location: string
 }
 
-const CardC:React.FC<Props> = function (props: Props)  {
-  const user = useSelector((state: any) => state.auth);
-  
-  let { title, description, image, link, location } = props
+const RateCard:React.FC<Props> = function (props: Props)  {
+  let { title, description, image, link, rating, location } = props
   const [open, setOpen] = React.useState(false);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
+
+  const user = useSelector((state: any) => state.auth);
+  const [userRating, setUserRating] = React.useState<number | null>();
+
+  const StyledRating = styled(Rating)(({ theme }) => ({
+    '& .MuiRating-iconEmpty .MuiSvgIcon-root': {
+      color: theme.palette.action.disabled,
+    },
+  }));
   
-  const handleBtnClick = async () => {
-    await postDataAPI('events/register', {
+
+  
+  const handleBtnClick = async () => {    
+    await postDataAPI('events/setrating', {
       username: user.user.username,
       eventName: title,
-      eventLink: link,
-      location: location,
-      imgLink: image,
+      rating: userRating
     })
     .then(res => {          
       setOpen(!open);
       setOpenSnackbar(!openSnackbar);  
     })
     .catch(err => console.log(err))
+
   };
+
   
   return (
     <>
@@ -46,7 +58,7 @@ const CardC:React.FC<Props> = function (props: Props)  {
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }
     }>
       <Alert onClose={() => setOpenSnackbar(!openSnackbar)} severity="success" sx={{ width: '100%' }}>
-        Successfully registered
+        Successfully rated event!
       </Alert>
     </Snackbar>
 
@@ -64,20 +76,27 @@ const CardC:React.FC<Props> = function (props: Props)  {
           transform: 'translate(-50%, -50%)',
           width: 400,
           bgcolor: 'background.paper',
-          borderRadius: 2,
           boxShadow: 24,
           p: 4,
+          borderRadius: 10,
         }
       } 
-        onClick={handleBtnClick}
       >
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Do you want to go to {title}?
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Click on the button below to go to the event page.
-        </Typography>
-        <Button variant="contained" sx={{ mt: 2 }}>Go to event</Button>
+      <Typography id="modal-modal-title" variant="h6" component="h2">
+          Did you enjoy the activity {title}?
+      </Typography>
+      <Rating 
+        name="customized-10"
+        onChange = {(event, newValue) => {
+          if (newValue) setUserRating(newValue-1);
+        }}
+        defaultValue={5} max={10} 
+      />
+        <Button onClick={handleBtnClick} variant="contained" sx={{
+          backgroundColor: "#3f51b5",
+          display: "flex",
+          marginTop: 2,
+        }}>Rate Event!</Button>  
       </Box>
     </Modal>
 
@@ -93,9 +112,13 @@ const CardC:React.FC<Props> = function (props: Props)  {
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
+          <Typography variant="h5" color="text.primary">
+            Rating: {rating}
           </Typography>
+        <Typography variant="body1" color="text.secondary">
+            {location}
+        </Typography>
+
         </CardContent>
       </CardActionArea>
     </Card>
@@ -103,4 +126,4 @@ const CardC:React.FC<Props> = function (props: Props)  {
   );
 }
 
-export default CardC;
+export default RateCard;

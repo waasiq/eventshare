@@ -11,6 +11,7 @@ const Activity: React.FC = function () {
     const [type, setType] = React.useState(null);
 
     React.useEffect(() => {
+      console.log(activity)
       if(activity) {
         const act = activity[0]; 
         const typ = activity[1];
@@ -28,76 +29,6 @@ const Activity: React.FC = function () {
               {finalActivity && <Scraper evnt={finalActivity} type={type} /> }
           </> 
         }
-
-        {/* <Box sx={activitiesStyles.cardsContainer}>
-          <Box sx={activitiesStyles.card}>
-            <CardC
-              title='Football'
-              description='Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal.'
-              image='https://img.olympicchannel.com/images/image/private/t_social_share_thumb/f_auto/primary/qjxgsf7pqdmyqzsptxju'
-              link='https://www.olympicchannel.com/en/sport/football/'
-            />
-          </Box>
-          <Box sx={activitiesStyles.card}>
-            <CardC
-              title='Football'
-              description='Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal.'
-              image='https://img.olympicchannel.com/images/image/private/t_social_share_thumb/f_auto/primary/qjxgsf7pqdmyqzsptxju'
-              link='https://www.olympicchannel.com/en/sport/football/'
-            />
-          </Box>
-          <Box sx={activitiesStyles.card}>
-            <CardC
-              title='Football'
-              description='Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal.'
-              image='https://img.olympicchannel.com/images/image/private/t_social_share_thumb/f_auto/primary/qjxgsf7pqdmyqzsptxju'
-              link='https://www.olympicchannel.com/en/sport/football/'
-            />
-          </Box>
-          <Box sx={activitiesStyles.card}>
-            <CardC
-              title='Football'
-              description='Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal.'
-              image='https://img.olympicchannel.com/images/image/private/t_social_share_thumb/f_auto/primary/qjxgsf7pqdmyqzsptxju'
-              link='https://www.olympicchannel.com/en/sport/football/'
-            />
-          </Box>
-        </Box>
-
-        <Box sx={activitiesStyles.cardsContainer}>
-          <Box sx={activitiesStyles.card}>
-            <CardC
-              title='Football'
-              description='Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal.'
-              image='https://img.olympicchannel.com/images/image/private/t_social_share_thumb/f_auto/primary/qjxgsf7pqdmyqzsptxju'
-              link='https://www.olympicchannel.com/en/sport/football/'
-            />
-          </Box>
-          <Box sx={activitiesStyles.card}>
-            <CardC
-              title='Football'
-              description='Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal.'
-              image='https://img.olympicchannel.com/images/image/private/t_social_share_thumb/f_auto/primary/qjxgsf7pqdmyqzsptxju'
-              link='https://www.olympicchannel.com/en/sport/football/'
-            />
-          </Box>
-          <Box sx={activitiesStyles.card}>
-            <CardC
-              title='Football'
-              description='Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal.'
-              image='https://img.olympicchannel.com/images/image/private/t_social_share_thumb/f_auto/primary/qjxgsf7pqdmyqzsptxju'
-              link='https://www.olympicchannel.com/en/sport/football/'
-            />
-          </Box>
-          <Box sx={activitiesStyles.card}>
-            <CardC
-              title='Football'
-              description='Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal.'
-              image='https://img.olympicchannel.com/images/image/private/t_social_share_thumb/f_auto/primary/qjxgsf7pqdmyqzsptxju'
-              link='https://www.olympicchannel.com/en/sport/football/'
-            />
-          </Box>
-        </Box> */}
       </Box>  
     )
 };

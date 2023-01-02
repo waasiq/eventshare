@@ -3,8 +3,8 @@ const activitiesStyles = {
         display: 'flex'
     },
     activitiesContainer: {
-        flex: 0.75,
         display: 'flex',
+        flex: 0.75,
         flexDirection: 'column',
     },
     cardsContainer: {
@@ -12,8 +12,8 @@ const activitiesStyles = {
         flexDirection: 'row',
     },
     card: {
-        padding: '20px 20px',
         width: '80%',
+        padding: '20px 20px',   
         '&:hover': {
             cursor: 'pointer',
             boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.2)',

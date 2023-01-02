@@ -6,6 +6,7 @@ import Profile from './pages/Profile/Profile'
 import Party from './pages/Party/Party'
 import Register from './pages/Register/Register'
 import Activities from './pages/Activities/Activities'
+import ParticipatedActiv from './pages/Activities/ParticipatedActiv'
 
 import Notify from './components/shared/Notify/Notify'
 import { refreshToken } from './redux/actions/authActions'
@@ -32,6 +33,7 @@ const App: React.FC = function () {
           <Route path="/party" element={<Party />} />
           <Route path='/register' element={<Register />} />
           <Route path='/activities' element={<Activities />} />
+          <Route path='/activities/participated' element={<ParticipatedActiv />} />
         </Routes>
       </Router>
   )

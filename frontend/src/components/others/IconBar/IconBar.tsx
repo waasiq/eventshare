@@ -9,16 +9,15 @@ import Icons from './Icons'
 import iconBarStyle from './styles/iconBarStyle'
 
 const IconBar: React.FC = function () {
-  const friendLogo = <img src="https://i.imgur.com/6Q3X4Zq.png" alt="logo" />
   return (
     <Box sx={iconBarStyle.container} >
       <Typography variant="h5">Discover</Typography>
       <Box sx={iconBarStyle.iconsContainer} >
-        <Icons Icon={CelebrationIcon} iconColor='red' text='Party All Night' />
-        <Icons Icon={LocalActivityIcon} iconColor='orange' text='Activities' />
-        <Icons Icon={ConnectingAirportsIcon} iconColor='blue'text='Travel Together' />
-        <Icons Icon={EmojiPeopleIcon} iconColor='pink' text='Meet Fellow Erasmusers' />
-        <Icons Icon={GroupsIcon} iconColor='yellow'text='Meetups' />
+        <Icons Icon={LocalActivityIcon} iconColor='orange' text='Activities' link='/activities' />
+        <Icons Icon={ConnectingAirportsIcon} iconColor='blue'text='Participated Activities' link='/activities/participated' />
+        <Icons Icon={CelebrationIcon} iconColor='red' text='Party All Night' link='' />
+        <Icons Icon={EmojiPeopleIcon} iconColor='pink' text='Meet Fellow Erasmusers' link='' />
+        <Icons Icon={GroupsIcon} iconColor='yellow'text='Meetups' link='' />
       </Box>
      </Box>
   )

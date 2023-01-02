@@ -65,6 +65,7 @@ const Scraper:React.FC<Props> = function(props: Props )  {
             description={data[i].date}
             image={data[i].imgLink}
             link={data[i].link}
+            location={data[i].location}
           />
         </Box>
       ); 

@@ -91,7 +91,7 @@ const getLinkedInEvents = async (req:Request, res:Response) => {
     
           if (!imgLink) imgLink = 'https://wordvice-wp-static.s3-ap-northeast-1.amazonaws.com/uploads/2019/01/LinkedIn_HP.jpg';
 
-          const event = new Events(name, date, location, interested, link, imgLink);
+          const event = new Events(date, name, location, interested, link, imgLink);
           events.push(event);
         }
 
@@ -113,9 +113,9 @@ const getLinkedInEvents = async (req:Request, res:Response) => {
 const getMeetUpEvents = async (req:Request, res:Response) => {
     let { event, location } = req.query;
     if (!event) event = 'basketball';
-    if (!location) location = 'tr--Istanbul';
+    // if (!location) location = 'tr--Istanbul';
 
-    const url = `https://www.meetup.com/find/?keywords=${event}&source=EVENTS&location=${location}`;
+    const url = `https://www.meetup.com/find/?keywords=${event}&source=EVENTS`;
     console.log(url);
 
   try {
@@ -129,7 +129,7 @@ const getMeetUpEvents = async (req:Request, res:Response) => {
         const image = $(el).find('img').attr('src')
         const loc = location
         const link = $(el).attr('href')
-        return new Events(title, date, loc, '', link, image)
+        return new Events(date, title, loc, '', link, image)
     }).get() 
 
     res.status(200).json({
@@ -152,7 +152,7 @@ async function getRenderedPage (url:any, type: string) {
   const password = '@Hello1234'
   const browser = await puppeteer.launch({ headless: true })
   const page = await browser.newPage()
-
+  
   if (type === 'lkdn') {
     await page.goto('https://www.linkedin.com/login', { timeout: 0, waitUntil: 'load' });
     await page.waitForSelector('#username')
@@ -160,14 +160,17 @@ async function getRenderedPage (url:any, type: string) {
     await page.type('#password', password)
     await page.click('.btn__primary--large')   
     await page.waitForNetworkIdle({ idleTime: 1000 })
+    await page.goto(url, { timeout: 0 , waitUntil: 'load'});
+    // await page.waitForNetworkIdle({ idleTime: 1000 })
   }
 
-  await page.goto(url, { timeout: 0 });
+  if (type === 'fb' || type === 'meetup') {
+    await page.goto(url, { timeout: 0, waitUntil: 'load' });
+    await page.waitForNetworkIdle({ idleTime: 1000 })
+  }
 
-  if (type === 'fb' || type === 'meetup') await page.waitForNetworkIdle({ idleTime: 1000 })
   const pagesContent = await page.content();
   browser.close()
-  // if (type === 'fb') await autoScroll(page);
   
   return pagesContent;
 }

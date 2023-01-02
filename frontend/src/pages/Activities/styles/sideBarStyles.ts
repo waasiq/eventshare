@@ -7,7 +7,7 @@ const sideBarStyles = {
     formControl: {
         padding: '0 0px',
         minWidth: '5px',
-        maxWidth: '75%',
+        maxWidth: '85%',
         color: 'white',
         backgroundColor: 'lightblue',
         display: 'flex',
@@ -18,9 +18,9 @@ const sideBarStyles = {
     },
     button: {
         margin: '10px 0px',
-        width: '75%',
+        width: '85%',
     }
+};
 
-}
 
 export default sideBarStyles

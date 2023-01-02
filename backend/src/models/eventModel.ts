@@ -5,6 +5,9 @@ interface IEvent extends Document {
     username: string;
     eventName: string;
     link: string;
+    location: string;
+    rating: number;
+    imgLink: string;
 }
 
 const eventModel = new Schema({   
@@ -24,6 +27,20 @@ const eventModel = new Schema({
     link: {
         type: String,
     },
+    rating: {
+        type: Number,
+        default: -1,
+        maximum: 10,
+        minimum: 0,
+    },
+    location: {
+        type: String,
+        default: 'N/A',
+    },
+    imgLink: {
+        type: String,
+        default: 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
+    }
 }, { timestamps: true });
 
 const Event = model<IEvent>('Event', eventModel);
