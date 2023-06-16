@@ -3,12 +3,9 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import rootReducer from "./reducers";
-
 import { composeWithDevTools } from "redux-devtools-extension";
-
 import { IProfile } from "./types/profile";
 import { IPost } from "./types/post";
-
 
 const store = createStore(
     rootReducer,

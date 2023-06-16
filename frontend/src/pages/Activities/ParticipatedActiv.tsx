@@ -8,7 +8,6 @@ import NavBar from '../../components/shared/NavBar/NavBar'
 
 const ParticipatedActiv:React.FC = () => {
     const { auth } = useSelector((state: any) => state)
-
     const [activities, setActivites ] = React.useState([])
 
     React.useEffect(() => {

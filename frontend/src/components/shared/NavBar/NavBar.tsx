@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import navStyle from './style'
 import { Link } from 'react-router-dom'
 import { Box, Avatar, Stack, Menu, MenuItem, ListItemIcon } from '@mui/material'
-import logo from '../../../img/logo-transp.png'
-
-import Search from './Search'
+import logo from '../../../img/logo_transparent.png';
 
 //* Icons
 import AppsIcon from '@mui/icons-material/Apps'
@@ -36,9 +34,6 @@ const NavBar: React.FC = function () {
     <Box sx={navStyle.navbar}>
         <Box sx={navStyle.name}>
             <img style={navStyle.img} src={logo} alt="logo" />
-        </Box>
-        <Box>
-          {/* <Search /> */}
         </Box>
         <Box sx={navStyle.navLinks}>
           <Link to="/home" style={navStyle.homeTab}>

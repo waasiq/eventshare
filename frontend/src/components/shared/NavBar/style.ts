@@ -3,7 +3,8 @@ const navStyle = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    color: '#b7c8d0'
+    color: '#b7c8d0',
+    paddingTop: '4px',
   },
   name: {
     fontSize: '1.5rem'

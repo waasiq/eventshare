@@ -1,36 +1,31 @@
-import React from 'react';
-import { Box, Button } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box } from '@mui/material';
 import activitiesStyles from './styles/activityStyles';
-import CardC from '../../components/others/Card/Card';
 import { useSelector } from 'react-redux';
 import Scraper from './Scraper';
 
+interface RootState {
+  activity: [string, string] | null;
+}
+
 const Activity: React.FC = function () {
-    const activity = useSelector((state: any) => state.activity);
-    const [finalActivity, setFinalActivity] = React.useState(null);
-    const [type, setType] = React.useState(null);
+  const activity = useSelector((state: RootState) => state.activity);
+  const [finalActivity, setFinalActivity] = useState<string | null>(null);
+  const [type, setType] = useState<string | null>(null);
 
-    React.useEffect(() => {
-      console.log(activity)
-      if(activity) {
-        const act = activity[0]; 
-        const typ = activity[1];
-        setFinalActivity(act);
-        setType(typ);
-        console.log(act);
-      }
-    }, [activity]);
+  useEffect(() => {
+    if (activity) {
+      const [act, typ] = activity;
+      setFinalActivity(act);
+      setType(typ);
+    }
+  }, [activity]);
 
-    return (
-        <Box sx={activitiesStyles.activitiesContainer} >
-        
-        {
-          <>
-              {finalActivity && <Scraper evnt={finalActivity} type={type} /> }
-          </> 
-        }
-      </Box>  
-    )
+  return (
+    <Box sx={activitiesStyles.activitiesContainer}>
+      {finalActivity && <Scraper evnt={finalActivity} type={type} />}
+    </Box>
+  );
 };
 
 export default Activity;
