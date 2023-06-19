@@ -8,7 +8,7 @@ import activitiesStyles from './styles/activityStyles'
 const Activities: React.FC = function () {
   return (
     <React.Fragment>
-        <NavBar />
+        <NavBar displayNormal={false} />
         <Box sx={activitiesStyles.mainContainer} >
           <ActivitySideBar />        
           <Activity />

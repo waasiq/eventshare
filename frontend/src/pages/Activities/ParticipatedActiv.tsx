@@ -20,30 +20,30 @@ const ParticipatedActiv:React.FC = () => {
     }, [auth.token])
 
     return (
-        <>
-        <NavBar />
-        <Box sx={participateStyles.activities}>
-            <Box sx={participateStyles.activities__container}>
-                <Box sx={participateStyles.activities__container__title}>
-                    <h1>Participated Activities</h1>
-                </Box>
-                <Box sx={participateStyles.activities__container__cards}>
-                    {activities.map((activity: any) => (                        
-                        <Box sx={participateStyles.card}>
-                            <RateCard 
-                                title={activity.eventName}
-                                description={activity.username} 
-                                image={activity.imgLink}
-                                location={activity.location}
-                                link={''}
-                                rating={activity.rating}
-                            />
-                        </Box>
-                    ))}
+        <React.Fragment>
+            <NavBar displayNormal={false}/>
+            <Box sx={participateStyles.activities}>
+                <Box sx={participateStyles.activities__container}>
+                    <Box sx={participateStyles.activities__container__title}>
+                        <h1>Participated Activities</h1>
+                    </Box>
+                    <Box sx={participateStyles.activities__container__cards}>
+                        {activities.map((activity: any) => (                        
+                            <Box sx={participateStyles.card}>
+                                <RateCard 
+                                    title={activity.eventName}
+                                    description={activity.username} 
+                                    image={activity.imgLink}
+                                    location={activity.location}
+                                    link={''}
+                                    rating={activity.rating}
+                                />
+                            </Box>
+                        ))}
+                    </Box>
                 </Box>
             </Box>
-        </Box>
-        </>
+        </React.Fragment>
     )
 }
 

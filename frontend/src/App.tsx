@@ -26,9 +26,9 @@ const App: React.FC = function () {
         <Notify />
         <Routes>
           <Route path="/" element={<Main />} />
-          {/* <Route path="/" element={
+          <Route path="/login" element={
             auth.token ? <Home /> : <Login />
-          } /> */}
+          } />
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path='/register' element={<Register />} />

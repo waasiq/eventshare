@@ -1,8 +1,6 @@
-import { Dispatch } from "react";
+import React, { Dispatch } from "react";
 import { Link } from "react-router-dom";
-
 import { IUser } from "../../redux/types/auth";
-import { Avatar } from "@mui/material";
 
 interface UserCardProps {
     user: IUser;
@@ -13,14 +11,9 @@ interface UserCardProps {
     children?: any;
 }
 
-const UserCard = ({
-    user,
-    border,
-    handleClose,
-    children,
-    setShowFollowers,
-    setShowFollowing
-}: UserCardProps) => {
+const UserCard:React.FC<UserCardProps> = (props: UserCardProps) => {
+    const { user, border, handleClose, children, setShowFollowers, setShowFollowing } = props;
+
     const handleCloseAll = () => {
         if (handleClose) handleClose();
         if (setShowFollowers) setShowFollowers(false);
@@ -33,17 +26,16 @@ const UserCard = ({
         >
             <div>
                 <Link
-                    to={`/profile/${user._id}`}
+                    to={`/profile/${user?._id}`}
                     onClick={handleCloseAll}
                     className="d-flex align-items-center"
                 >
-                    {/* <Avatar alt="avatar" src={user.avatar} /> */}
                     <div
                         className="ms-2"
                         style={{ transform: "translateY(-2px)" }}
                     >
-                        <span className="d-block">{user.username}</span>
-                        <small style={{ opacity: 0.7 }}>{user.fullname}</small>
+                        <span className="d-block">{user?.username}</span>
+                        <small style={{ opacity: 0.7 }}>{user?.fullname}</small>
                     </div>
                 </Link>
             </div>

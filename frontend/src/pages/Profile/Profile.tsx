@@ -15,7 +15,7 @@ const Profile: React.FC = function () {
 
   return (
     <React.Fragment>
-        <NavBar />
+        <NavBar displayNormal={false} />
         <Box sx={profileStyle.coverPictureContainer}>
                 <img src="https://cutt.ly/gBfz10g" style={profileStyle.coverPicture} alt="cover" />
         </Box>

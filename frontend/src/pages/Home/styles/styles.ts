@@ -1,6 +1,7 @@
 const homeStyle = {
   container: {
-    display: 'flex'
+    display: 'flex',
+    padding: '0 33px',
   }
 }
 

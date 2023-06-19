@@ -5,9 +5,7 @@ import {
   FormControlLabel, Checkbox, Paper,
   Grid, Typography
 } from '@mui/material/';
-
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../redux/actions/authActions';
 import { useDispatch } from 'react-redux';
@@ -35,7 +33,7 @@ const Login: React.FC = function() {
   };
 
   return (
-    <>
+    <React.Fragment>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -44,7 +42,7 @@ const Login: React.FC = function() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: 'url(https://picsum.photos/2000)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -119,7 +117,7 @@ const Login: React.FC = function() {
           </Box>
         </Grid>
       </Grid>
-    </>
+    </React.Fragment>
   )
 }
 

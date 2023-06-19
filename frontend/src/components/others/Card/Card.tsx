@@ -1,26 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import {
-  Box,
-  Modal,
-  Typography,
-  Button,
-  Snackbar,
-  Alert,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia
-} from '@mui/material';
+import { Typography, Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
 import { postDataAPI } from '../../../utils/fetchApi';
 import { useSelector } from 'react-redux';
+import CardSnack from './CardSnack';
 
 interface Props {
   title: string;
   description: string;
   image: string;
-  link: string;
-  location: string;
+  link?: string;
+  location?: string;
 }
 
 const CardC: React.FC<Props> = (props: Props) => {
@@ -63,46 +53,14 @@ const CardC: React.FC<Props> = (props: Props) => {
 
   return (
     <React.Fragment>
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={() => setOpenSnackbar(false)}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      >
-        <Alert onClose={() => setOpenSnackbar(false)} severity="success" sx={{ width: '100%' }}>
-          Successfully registered
-        </Alert>
-      </Snackbar>
-
-      <Modal
+      <CardSnack 
+        openSnackbar={openSnackbar}
+        setOpenSnackbar={setOpenSnackbar} 
         open={open}
-        onClose={() => setOpen(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 400,
-            bgcolor: 'background.paper',
-            borderRadius: 2,
-            boxShadow: 24,
-            p: 4,
-          }}
-          onClick={handleBtnClick}
-        >
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Do you want to go to {title}?
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Click on the button below to go to the event page.
-          </Typography>
-          <Button variant="contained" sx={{ mt: 2 }}>Go to event</Button>
-        </Box>
-      </Modal>
+        setOpen={setOpen}
+        handleBtnClick={handleBtnClick}
+        title={title}
+      />
 
       <motion.div
         whileHover={{ scale: 1.05 }}

@@ -12,6 +12,7 @@ const SingleTestimonial: React.FC<Props> = ({ imgSrc, description, name }) => {
     <motion.div
       className="bg-white overflow-hidden shadow rounded-lg flex"
       initial={{ opacity: 0, scale: 0.9 }}
+      whileHover={{ scale: 1.05 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
     >
