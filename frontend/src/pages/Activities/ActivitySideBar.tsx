@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { MenuItem, Select, Box, Button, FormControl, InputLabel } from '@mui/material';
-import sideBarStyles from './styles/sideBarStyles';
 import { useDispatch } from 'react-redux';
 import { setSearch } from '../../redux/actions/activityActions';
+import ActivitiesMenu from './ActivitiesMenu';
 
 const ActivitySideBar: React.FC = function () {
     const dispatch = useDispatch();
@@ -34,63 +34,27 @@ const ActivitySideBar: React.FC = function () {
     };
 
     return (
-        <Box sx={sideBarStyles.container}>
-            <h2>Find Common Activities</h2>
+        <div className="flex flex-col bg-gray-100 p-10 m-4 rounded-lg ">
+            <h2 className="text-2xl font-medium mb-4">Search new events</h2>
 
-            <FormControl sx={sideBarStyles.formControl}>
-                <InputLabel id="demo-simple-select-label">Facebook Activities</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={fbActivity}
-                    onChange={(e: any) => handleChange(e, 'fb')}
-                >
-                    {fbActivities.map((activity, index) => (
-                        <MenuItem key={index} value={activity}>{activity}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
 
-            <Button variant="contained" sx={sideBarStyles.button} onClick={() => searchBtnClick('fb')}>
-                Search Events on Facebook
-            </Button>
-
-            <FormControl sx={sideBarStyles.formControl}>
-                <InputLabel id="demo-simple-select-label">LinkedIn Activities</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={linkedinActivity}
-                    onChange={(e: any) => handleChange(e, 'linkedin')}
-                >
-                    {linkedinActivities.map((activity, index) => (
-                        <MenuItem key={index} value={activity}>{activity}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
-
-            <Button variant="contained" sx={sideBarStyles.button} onClick={() => searchBtnClick('linkedin')}>
-                Search Events on LinkedIn
-            </Button>
-
-            <FormControl sx={sideBarStyles.formControl}>
-                <InputLabel id="demo-simple-select-label">MeetUp Activities</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={meetupActivity}
-                    onChange={(e: any) => handleChange(e, 'meetup')}
-                >
-                    {linkedinActivities.map((activity, index) => (
-                        <MenuItem key={index} value={activity}>{activity}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
-
-            <Button variant="contained" sx={sideBarStyles.button} onClick={() => searchBtnClick('meetup')}>
-                Search Events on MeetUp
-            </Button>
-        </Box>
+            <div className="flex flex-col justify-center">
+               <ActivitiesMenu
+                    label="Facebook Activities"
+                    activities={fbActivities}
+                    onClick={searchBtnClick}
+                    onChange={handleChange}
+                    type="fb"
+                />
+                <ActivitiesMenu
+                    label="LinkedIn Activities"
+                    activities={linkedinActivities}
+                    onClick={searchBtnClick}
+                    onChange={handleChange}
+                    type="linkedin"
+                />
+            </div>
+        </div>
     );
 };
 

@@ -25,10 +25,10 @@ const AppNavBar: React.FC = () => {
     };
   
     return (
-        <Box sx={navStyle.navbar}>
-        <Box sx={navStyle.name}>
+      <Box sx={navStyle.navbar}>
+        <Link to="/home" style={navStyle.link}>
           <img style={navStyle.img} src={logo} alt="logo" />
-        </Box>
+        </Link>
         <Box sx={navStyle.navLinks}>
           <Link to="/" style={navStyle.homeTab}>
             <Stack direction="row" alignItems="center" gap={1}>
@@ -60,6 +60,6 @@ const AppNavBar: React.FC = () => {
         </Box>
       </Box>
     )
-}
+};
 
 export default AppNavBar;
