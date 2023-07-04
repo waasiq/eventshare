@@ -1,5 +1,5 @@
 ## EventShare
-<img src="./docs/eventshare-logo.png" alt="EventShare Logo" />
+<img src="./docs/logo.png" alt="EventShare Logo" />
 
 # 📖 Table of Contents
 - 📖 Table of Contents
